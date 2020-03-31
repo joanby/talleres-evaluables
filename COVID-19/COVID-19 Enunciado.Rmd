@@ -1,0 +1,116 @@
+---
+title: "Taller evaluable 2 - COVID19"
+author: "PON TU NOMBRE AQUÍ O TENDRÁS UN CERO DEL TALLER ;)"
+date: "1 de Abril de 2020"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+En este ejercicio vamos a analizar los casos documentados de Corona Virus (COVID-19) en diferentes regiones del mundo. Los datos originales los podéis encontrar en [Kaggle](https://www.kaggle.com/imdevskp/corona-virus-report), el portal de conjuntos de datos para analizar (que de hecho tienen competiciones con premios de hasta un millón de dólares!).
+
+Cuando tengas que imprimir una tabla `x` por pantalla, utiliza la función `kable(x)` del paquete `knitr` para que al imprimirla te salga bonita en el documento final.
+
+## Carga y análisis exploratorio inicial
+
+1. Carga el dataset adjunto al taller evaluable correctamente. 
+  * ¿Qué tipo de fichero es? ¿Cómo se llama ese tipo de fichero y qué lo caracteriza?
+  * Consulta su estructura con la función adecuada de `R` e indica de qué tipo de dato se trata cada columna.
+
+2. Cambia el nombre de las columnas para que esten en castellano utilizando la siguiente nomenclatura:
+
+* Provincia_Estado
+* Pais_Region
+* Latitud
+* Longitud
+* Fecha
+* Casos_Confirmados
+* Muertos
+* Recuperados
+
+Haz un `head` de la tabla para mostrarme los 10 primeros elementos y que realmente has hecho el cambio. A partir de ahora en el resto de ejercicios utilizaremos esta nueva tabla para que sea más fácil de entender y analizar.
+
+3. Algunas de estas columnas deberían ser datos cualitativos, algunos datos ordinales y otros datos cuantitativos. Justifica cual debería ser el tipo de dato de **cada columna** y haz la conversión adecuada utilizando las funciones adecuadas para ello. Haz un `str` al final para mostrar que has efectuado todos los cambios solicitados.
+
+4. Hay unos cuantos tipos especial de datos
+
+* **Las fechas**. Justifica a qué tipo de datos (ordinal, cualitativo o cuantitativo) se parece más. 
+* Utiliza la función `as.Date` para convertir la columna de la fecha a dicho formato. Pista: investiga la documentación de la función anterior para ver cómo usar el parámetro `format` para conseguirlo.
+
+* **Datos anómalos**. El número de casos documentados (confirmados, muertos o recuperados) debería ser un número natural (cero o positivo). Se supone que debería verificarse la ecuación siguiente:
+
+$$Casos\ Confirmados = Muertos + Recuperados + Enfermos$$
+
+* Utiliza la ecuación anterior para añadir una nueva columna llamada `Enfermos` que calcule el valor a partir de la ecuación anterior, y comprueba que los valores tienen sentido. 
+
+## Análisis geográfico
+
+5. Crea un nuevo dataset `datos_europa` a partir de filtrar el dataset original para quedarte únicamente con los valores correspondiedose a los paises de **Europa Occidental**, que se hallan más allá de las latitudes 38ºN y entre las longitudes 20ºW y 40ºE (te recuerdo que las latitudes del sur y del oeste son negativas y las del norte y el este son positivas). Indica cuantas filas de datos pertenecen a observaciones de Europa utilizando alguna de las funciones vistas en clase.
+
+6. Hace un mes, el profesor estuvo en Potsdam, Alemania. Vamos a ver si tuvo muchas posibilidades de contagio en su estancia. Para ello sigue los tres siguientes pasos:
+  * Crea una función que dadas dos ubicaciones geográficas `x=(lat1, long1)` y `y=(lat2, long2)`, calcule la distancia en grados entre esos dos lugares utilizando la fórmula
+
+$$d(x,y) = \sqrt{(lat1 - lat2)^2 + (long1-long2)^2}.$$
+  
+  * Calcula la distancia de cada observación de Corona Virus a Potsdam con la función Anterior. Potsdam se halla en las coordenadas geográficas 52.3988609 de latitud Norte y 13.0656605 longitud Este. Añadelo como nueva columna a tu conjunto de datos original (la puedes llamar dist_potsdam)
+
+  * Investiga cuantos casos caen dentro de la bola de centro Potsdam y a distancia menor de 5 grados. Esos son los casos de Corona Virus más cercanos a Potsdam.
+  
+* Teniendo en cuenta que estuvo allí entre los días 2 y 7 de Marzo, ¿tendría que estar preocupado de haber estado expuesto al virus? 
+
+7. Muestra el top 10 de país/región con más proporción de muertos (la cual definiremos como, fijada una fecha, el número de muertos dividido por número de casos confirmados por país/región), desde el que tiene mayor proporción de casos al que tiene menos. 
+
+* Elige la fecha del 29 de Marzo para hacer el cálculo anterior.
+* Debes excluir de top los países con número de casos confirmados a cero (si no te saldrá una proporción infinito). 
+* ¿En qué posición del ranking queda España? ¿Y China, el país donde se originó el COVID-19? Comenta los resultados obtenidos acerca de los países que aparecen en el ranking y por qué.
+
+8. Convierte las latitudes y longitudes a datos numéricos agrupados haciendo uso de la función cut, para ello:
+
+* Utiliza la Regla de Scott para dividir las latitudes y la de Sturges, para dividir las longitudes indicando en todo caso el valor de la amplitud de corte utilizada así como el número de clases que sale en cada caso. 
+
+* Utiliza esos datos agrupados para hacer una tabla de contingencia que muestre cada grupo de latitudes en fila, y grupo de longitudes en columna y que cuente el número de filas del data set en cada combinación de latitud y longitud. 
+
+
+## Análisis de tiempo
+
+9. Crea un diagrama que muestre la evolución de número por día del número de casos confirmados, número de muertos y recuperados. 
+* El diagrama que elijas debe mostrar los tres datos a la vez, así que intenta exprimirte el cerebro para conseguir un gráfico chulo! 
+* Haz que el eje de las y esté en escala logarítmica para apreciar mejor el crecimiento del número de casos.
+* No te olvides de añadir una leyenda que documente los casos correctamente.
+
+10. Representa la evolución del número de casos registrados en España desde el inicio de la epidemia. 
+* Cuando observas el mayor crecimiento del virus?
+* Extrae una conclusión final válida basándote en ellos acerca de la evolución del virus. 
+
+### Ejercicio extra: regresión
+
+Queremos estudiar la evolución del número de casos confirmados en función del tiempo que ha pasado desde el origen de la pandemia. Por ello nos interesa estudiar cual de los tres siguientes modelos es el más acertado en la predicción:
+
+* Modelo de regresión lineal  (Casos_Confirmados ~ Dias):
+
+$$\textrm{Casos_Confirmados} = \alpha\cdot\textrm{Dias}+\beta$$
+
+* Modelo de regresión exponencial (log Casos_Confirmados ~ Dias):
+
+$$\textrm{Casos_Confirmados} = m\cdot e^{\alpha \cdot \textrm{Dias}}$$
+
+* Modelo de regresión potencial (log Casos_Confirmados ~ log Dias):
+
+$$\textrm{Casos_Confirmados} = m\cdot \textrm{Dias}^\alpha$$
+donde $m=e^\beta$.
+
+En este caso queremos utilizar la función `lm` para estudiar los tres modelos. Nos centraremos solamente en el caso de España (el mismo sub data frame que has utilizado en el ejercicio 10).
+
+* Tomando como origen de la pandemia el 22 de Enero de 2020, añade una columna `Dias` que calcule el número de días transcurridos desde esa fecha (utiliza para ello la función `difftime`). Te recomiendo que uses la función `as.numeric` para convertir esas diferencias de fechas en números, si no no podrás hacer la regresión siguiente.
+* Escribe las tres ecuaciones de los modelos (calcula los parámetros indicados en los tres modelos anteriores).
+* Compara y discute los tres valores del parámetro $R^2$ de cada modelo y concluye cual es el mejor modelo de los tres.
+* Representa los tres modelos en un mismo gráfico utilizando el gráfico más adecuado.
+* Cambia la estética del gráfico anterior para que el eje de las y abarque desde 0 hasta 1.000.000 de infectados.
+* Añade una leyenda para tener una mejor idea de cual es cada modelo. 
+* Representa tres puntos, uno sobre cada modelo de donde nos encontramos el día de hoy. 
+* Según cada uno de esos tres modelos, ¿cuántos infectados cabe esperar que habrá el 20 de Abril de 2020 cuando volvamos a clase después de Semana Santa (cuando habrán pasado ya 89 días desde el origen de la pandemia)?
+
