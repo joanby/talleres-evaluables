@@ -1,0 +1,122 @@
+---
+title: "FIFA 2019 Taller Evaluable 3"
+author: "Pon tu nombre aquí"
+date: "8 de mayo de 2020"
+output: html_document
+---
+
+En [FIFA 19 complete player dataset 18k+ FIFA 19 players, ~90 attributes extracted from the latest FIFA database](https://www.kaggle.com/karangadiya/fifa19#data.csv)
+
+Tenemos acceso al data set de los jugadores del videojuego FIFA 2019. La información que aporta la página es la siguiente (si necesitáis más información acudid a la página):
+
+*About this file*
+
+ *data.csv includes lastest edition FIFA 2019 players attributes like Age, Nationality, Overall, Potential, Club, Value, Wage, Preferred Foot, International Reputation, Weak Foot, Skill Moves, Work Rate, Position, Jersey Number, Joined, Loaned From, Contract Valid Until, Height, Weight, LS, ST, RS, LW, LF, CF, RF, RW, LAM, CAM, RAM, LM, LCM, CM, RCM, RM, LWB, LDM, CDM, RDM, RWB, LB, LCB, CB, RCB, RB, Crossing, Finishing, Heading, Accuracy, ShortPassing, Volleys, Dribbling, Curve, FKAccuracy, LongPassing, BallControl, Acceleration, SprintSpeed, Agility, Reactions, Balance, ShotPower, Jumping, Stamina, Strength, LongShots, Aggression, Interceptions, Positioning, Vision, Penalties, Composure, Marking, StandingTackle, SlidingTackle, GKDiving, GKHandling, GKKicking, GKPositioning, GKReflexes, and Release Clause.*
+
+
+## Carga de los datos
+
+Cargamos los datos y los visualizamos
+```{r}
+data=read.csv("data.csv",stringsAsFactors = FALSE)
+head(data)
+str(data)
+```
+
+# Preguntas 
+
+Todas las preguntas valen punto hay que subir  a la actividad correspondiente de Campus Extens el Rmd y el Html/PDF. ¡No te olvides el nombre!
+
+
+##  Pregunta 1
+
+La variable Overall es un indicador de qué tan bueno es un jugador, mientras que su Potencial indica cómo suele jugar de normal en los partidos. Un jugador juega al máximo de su potencial cuando ambos números coinciden. ¿Qué proporción de jugadores juegan al máximo de potencial en los partidos?
+
+```{r pregunta1}
+
+```
+
+##  Pregunta 2
+
+Establece una semilla igual al dia de hoy en formato 'yyyymmdd' y extrae una **muestra aleatoria polietápica** eligiendo 8 jugadores de 5 clubs de fútbol.
+
+```{r pregunta2}
+
+```
+##  Pregunta 3
+
+Establece una semilla igual al dia de hoy en formato 'yyyymmdd' y extrae una **muestra aleatoria simple** de 200 jugadores. Esta será la fuente de datos que utilizaremos durante el resto del taller.
+
+```{r pregunta3}
+
+```
+
+##  Pregunta 4
+
+A partir de la muestra anterior, estima la proporción de jugadores de fútbol que son zurdos y da un error de dicha estimación.
+
+```{r pregunta4}
+
+```
+
+
+##  Pregunta 5
+
+A partir de la muestra anterior, obtén un intervalo de confianza al 95% de confianza para la proporción de jugadores de fútbol que son zurdos.
+
+```{r pregunta5}
+
+```
+
+
+##  Pregunta 6
+
+A partir de la muestra anterior, obtén un intervalo de confianza al 90% de confianza para la edad media de los jugadores.
+
+```{r pregunta6}
+```
+
+##  Pregunta 7
+
+Consideremos el contraste de hipótesis dado por:
+
+$$
+\left\{\begin{array}{l}
+H_0:\mu_{Age}\geq = 30, \\
+H_1:\mu_{Age} < 30.
+\end{array}
+\right.
+$$
+
+donde $\mu_{Age}$ indica la edad media de los jugadores de fútbol. A partir de la muestra anterior, calcula el p-valor del contraste e interpreta el resultado obtenido. 
+
+```{r pregunta7}
+
+```
+
+
+## Pregunta 8
+
+Realiza un gráfico que muestre la distribución de edad de los jugadores de fútbol de nuestra muestra.
+
+```{r pregunta8}
+
+```
+
+## Pregunta 9
+
+Supongamos que la edad de los jugadores de fútbol se distribuye segun una normal (próximamente aprenderéis a validar si esto es verdad o no). A partir de la muestra anterior, realiza un contraste de hipótesis para validar si la varianza de la edad de los jugadores zurdos y diestros es o no es la misma a un nivel de significación del 5%.
+
+
+```{r pregunta9}
+
+```
+
+## Pregunta 10
+
+A partir de la muestra anterior, realiza un contraste de hipótesis para validar si la media de edad de los jugadores zurdos y diestros es o no es la misma.
+
+```{r pregunta10}
+
+```
+
