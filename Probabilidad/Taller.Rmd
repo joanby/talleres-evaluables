@@ -1,0 +1,34 @@
+---
+title: "Ejercicios evaluables 1"
+author: "10% de la nota de exámenes"
+date: "4/4/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Tenéis que entregar tanto el Rmd como el PDF. Recordad que se valorará la redacción, así como la presentación, inclusión de fórmulas en LaTeX y justificación de vuestros cálculos y operaciones realizadas. Si se detecta plagio en alguna de las entregas la nota de la tarea actual será de cero puntos y no será recuperable. 
+
+
+## Ejercicio 1 (2p)
+
+Los cinco graduados de este año de matemáticas, para celebrar su título recien adquirido, lanzan el birrete arriba durante la ceremonia de graduación. Al recogerlo del suelo, lo hacen aleatoriamente. ¿cuál es la probabilidad de que ninguno de ellos se coloque su birrete original?
+
+## Ejercicio 2 (4p)
+
+En Amazon, la venta de videojuegos ha aumentado durante estos días de confinamiento, de modo que sigue un proceso de Poisson de parámetro $\lambda = 3$ artículos vendidos por minuto.
+
+* ¿Cuál es la probabilidad que se vendan exactamente 32 videojuegos en un periodo de 10 minutos? ¿Y como mínimo 32 ventas? ¿Y cómo máximo 32 ventas?
+* ¿Cuál es la probabilidad de que pasen 3 periodos de 2 minutos consecutivos sin ninguna venta?
+
+# Ejercicio 3 (4p)
+
+La curva de la distribución de Gompertz estudia la mortalidad de las especies biológias en un entorno específico. El entorno depende de dos escalares $a,b>0$ y tiene por función de densidad:
+
+$$f(t) = abe^{a}e^{bt} e^{-ae^{bt}}, t\geq 0$$
+
+* Comprueba que $f(t)$ es función de densidad detallando todos los pasos del proceso. (Pista: debes hacer un cambio de variable para hacer la integral).
+* Calcula la función de distribución acumulada detallando todos los pasos del proceso.
