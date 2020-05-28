@@ -15,6 +15,15 @@ En este ejercicio vamos a analizar los casos documentados de Corona Virus (COVID
 
 Cuando tengas que imprimir una tabla `x` por pantalla, utiliza la función `kable(x)` del paquete `knitr` para que al imprimirla te salga bonita en el documento final.
 
+```{r}
+library(reticulate)
+reticulate::use_python("/usr/bin/python")
+pd <- import("pandas")
+datos <- pd$read_csv("covid_19_clean_complete.csv")
+head(datos)
+```
+
+
 ## Carga y análisis exploratorio inicial
 
 1. Carga el dataset adjunto al taller evaluable correctamente. 
