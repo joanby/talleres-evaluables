@@ -1,0 +1,54 @@
+---
+title: "Taller de Clustering"
+author: "PON TU NOMBRE AQUÍ"
+date: "6/5/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+**El ejercicio de clustering contará sobre el 10% de trabajos extra debido al confinamiento. Justificad todas las respuestas, y cuando hagáis una representación gráfica, no os olvidéis de añadir leyenda, título, etiquetas de los ejes y lo que consideréis necesario para obtener toda la puntuación del ejercicio.**
+
+
+## Ejercicio 1
+
+Carga el dataset de clustering adjunto al taller en CSV. Fíjate bien que esté bien cargado y ponle nombre significativo a cada columna (por defecto trae el nombre de la pregunta que has respondido). 
+
+## Ejercicio 2
+
+Indica qué variables puedes utilizar y cuales no para hacer un clustering de los alumnos de primero de mates del curso 19/20.
+
+## Ejercicio 3
+
+Haz un clustering utilizando k-means para segmentar los alumnos en k=3 grupos utilizando el algoritmo de MacQueen. 
+
+## Ejercicio 4
+
+Determina el número óptimo de clusters a realizar utilizando la técnica del codo. 
+
+## Ejercicio 5
+
+Indica el porcentaje de la variabilidad total explicado por el kmeans que has hallado según el método del codo del ejercicio anterior.
+
+## Ejercicio 6
+
+Calcula una matriz de distancias de los datos del dataset utilizando la distancia de Manhattan.
+
+## Ejercicio 7
+
+Haz un clustering jerárquico utilizando el método de enlace completo.
+
+## Ejercicio 8
+
+Representa el dendrograma del clustering anterior.
+
+## Ejercicio 9
+
+Determina a qué altura hay que cortar el dendrograma para obtener el mismo número de clusters que el determinado por el método del codo en el ejercicio 4.
+
+## Ejercicio 10
+
+Representa sobre el clustering jerárquico del ejercicio 8 unas cajas que agrupen los individuos que pertenecen al mismo cluster segun la altura de corte determinada en el ejercicio anterior. 
